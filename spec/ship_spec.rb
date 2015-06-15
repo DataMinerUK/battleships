@@ -9,22 +9,22 @@ describe 'Ship' do
       expect(ship.position).to eq 'C4'
     end
 
-    it 'is definitely IN its position when created' do
+    it 'is in its position when created' do
       ship = Ship.new 'C4'
       expect(ship.position).to_not eq 'C5'
     end
   end
   
-  context 'ship status' do
+  context 'Ship Status' do
 
     it 'is floating when created' do
       ship = Ship.new 'C4'
       expect(ship.status).to eq :floating
     end 
 
-    xit 'is not floating when hit' do
+    it 'is not floating when hit' do
         ship = Ship.new 'C4'
-        ship.hit "C4"
+        ship.hit 
         expect(ship.status).to eq :sunk
     end
 

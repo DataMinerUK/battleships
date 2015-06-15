@@ -18,7 +18,7 @@ attr_accessor :position
     position
   end
 
-def hit position
+def hit
   @status = :sunk
 end
 
@@ -31,3 +31,4 @@ end
 
 
 end
+
