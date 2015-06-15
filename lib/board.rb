@@ -6,8 +6,8 @@ class Board
     @dimension = dimension
   end
 
-  def place ship, coordinates 
-
+  def place ship, coordinates
+    ship
   end
 
 end
