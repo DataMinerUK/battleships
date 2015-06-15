@@ -10,4 +10,8 @@ class Board
     ship
   end
 
+  def ship?
+
+  end  
+
 end

@@ -24,4 +24,10 @@ describe Board do
 
   end
 
+  describe '#ship?' do
+    it 'responds to ship?' do
+      expect( subject).to respond_to :ship?
+    end
+  end
+
 end
