@@ -35,7 +35,7 @@ describe Board do
     end
 
     it 'adds a ship to the board at the given coordinate' do
-      p subject.playing_on
+      # p subject.playing_on
       expect(subject.playing_on[[0,0]]).to eq ship
       expect(subject.playing_on[[0,1]]).to eq ship
       expect(subject.playing_on[[0,2]]).to eq ship
@@ -44,15 +44,14 @@ describe Board do
 
     end
 
+    describe '#where_ship' do
+      it 'gives the coordinates of a ship' do
+        expect(subject.where_ship ship).to eq [[0,0],[0,1],[0,2]]
+      end
+    end
+
   end
 
-  # describe '#where_ship' do
-  #   it 'gives the coordinates of a ship' do
-  #     expect(subject.where_ship ship).to eq [[0,0],[0,1],[0,2]]
-  #
-  #   end
-  #
-  # end
 
   describe '#ship_at?' do
     it 'responds to ship?' do
