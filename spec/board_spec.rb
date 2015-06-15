@@ -5,6 +5,7 @@ describe Board do
   subject { Board.new dim}
   let( :dim ) { [1, 1] }
   let( :point ) { [0, 0] }
+  let( :orientation ) { :horizontal }
   let( :ship) do
     double 'ship', size: 1
   end
@@ -20,12 +21,12 @@ describe Board do
 
   describe '#place' do
 
-    it 'responds to place with to arguments' do
-      expect( subject ).to respond_to( :place ).with( 2 ).arguments
+    it 'responds to place with 3 arguments' do
+      expect( subject ).to respond_to( :place ).with( 3 ).arguments
     end
 
     it 'adds a ship to the board at the given coordinate' do
-      subject.place ship,point
+      subject.place ship, point, orientation
       expect(subject.playing_on[point]).to eq ship
     end
 
@@ -37,7 +38,7 @@ describe Board do
     end
 
     it 'checks wether there is not water at a given coordinate' do
-      subject.place ship, point
+      subject.place ship, point, orientation
       expect(subject.ship? point).to be true
     end
   end

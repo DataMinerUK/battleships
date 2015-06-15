@@ -15,7 +15,7 @@ class Board
     Hash[coordinate_keys.zip(value_water)]
   end
 
-  def place ship, coordinate
+  def place ship, coordinate, direction
     playing_on[coordinate] = ship
   end
 
