@@ -2,7 +2,6 @@
 
 # More advanced OO with games: Battle Ships
 
-***Please note, as with all Makers Academy materials, there may be subtle errors in the following materials.  Please try to approach those as challenges on which to polish your debugging skills - pull requests always welcome.***
 
 Battleships (or Battleship) is a game where each player has a board upon which they can place a number of ships. The boards are 10x10 two dimensional grid.
 
@@ -12,11 +11,7 @@ After each player has placed their ships on their own board they take turns to s
 
 When all of one player's ships have been sunk the game finishes and the player who has ships remaining is the winner.
 
-***Please work on this project with a pair partner. Please take turns on the keyboard as the driver as described in the [pairing pill](pills/pairing.md) :pill:.***
-
-Please also see the [Learning Objectives](learning_objectives.md) for this project.
-
-## Version 0: The User Stories
+## The User Stories
 
 If one thinks about what a player wants from a game of battleships, one can imagine a set of user stories like the following:
 
@@ -57,3 +52,14 @@ As a player
 So that I can play against a human opponent
 I would like to play a two-player game
 ```
+
+## Domain Model
+
+# Ship
+
+* Ships have sizes
+
+# Board
+
+* A board has dimensions
+* A board can have a ship placed on it
