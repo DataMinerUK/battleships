@@ -15,7 +15,7 @@ describe Board do
   end
 
   it 'creates a blank board filled with water' do
-    expect(subject.blank).to eq({[0,0] => 'water'})
+    expect(subject.playing_on).to eq({[0,0] => :water})
 
   end
 
@@ -34,12 +34,12 @@ describe Board do
 
   describe '#ship?' do
     it 'responds to ship?' do
-      expect( subject).to respond_to :ship?
+      expect( subject).to respond_to :ship_at?
     end
 
     it 'checks wether there is not water at a given coordinate' do
       subject.place ship, point, orientation
-      expect(subject.ship? point).to be true
+      expect(subject.ship_at? point).to be true
     end
   end
 
