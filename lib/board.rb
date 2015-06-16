@@ -12,11 +12,25 @@ class Board
 
   def place ship, coordinate, orientation
     orientation == 'horizontal' ? index = 1 : index = 0
-    coordinate_dup = coordinate.dup
-    ship.size.times do
-      playing_on[coordinate_dup] = ship
-      coordinate_dup[index] += 1
+
+    ship_hash = {}
+    ship.size.times do |i|
+      coordinate_dup = coordinate.dup
+      coordinate_dup[index] += i
+      ship_hash[coordinate_dup] = ship
     end
+
+    board_coordinates = playing_on.keys
+    ship_coordinates = ship_hash.keys
+
+    fail 'Ship needs to be on the board' unless (ship_coordinates - board_coordinates).empty?
+
+    current_play = playing_on.merge(ship_hash)
+    # puts current_play
+    # p playing_on
+    playing_on = current_play
+    # p playing_on
+
   end
 
   def ship_at? coordinate

@@ -45,6 +45,10 @@ describe Board do
 
       end
 
+      it 'raises an error when ship cannot be placed on the board' do
+        expect{ subject.place double(:ship, size: 3), [5,5], 'horizontal' }.to raise_error 'Ship needs to be on the board' 
+      end
+
     end
 
     describe '#where_ship' do
