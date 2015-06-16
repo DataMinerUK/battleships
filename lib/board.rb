@@ -21,19 +21,14 @@ def hit coordinate
     "MISS!"
   end
 
-# board.find {|ship| ship.}
-  # board.find do |ship|
-  #   if ship.position == position
-  #     ship.hit
-  #     puts "HIT!"
-  #   else
-  #     puts "MISS!"
-  #   end
-  # end
 end
 
-def all_ships_sunk?
-  board.all? {|ship| ship.status == :sunk} 
+def all_ships_sunk
+   if board.all? {|ship| ship.status == :sunk}
+     'You win! All ships have been sunk BIOTCH'
+   else
+     "Keep playing. Ships be floatin'"
+   end
 end
 
 

@@ -25,17 +25,28 @@ let (:ship){double :ship, position: "C4"}
         expect(ship).not_to have_received(:hit)
       end
 
-      it { is_expected.to respond_to :all_ships_sunk? }
+      it { is_expected.to respond_to :all_ships_sunk }
 
-      it 'can report that all ships are sunk' do
-        allow(subject).to receive :hit
-        subject.hit "C4"
-        expect(subject.all_ships_sunk?).to eq true
+       context 'when testing sunk ships' do
+
+         let (:ship){double :ship, position: "C4", status: :sunk}
+
+        it 'can report that all ships are sunk' do
+          subject.place ship
+          expect(subject.all_ships_sunk).to eq 'You win! All ships have been sunk BIOTCH'
+        end
       end
 
-      # it 'can report that NOT all ships have been sunk' do
-      #   allow(subject)
-      # end
+      context 'when testing floating ships' do
+
+        let (:ship){double :ship, position: "C4", status: :floating}
+
+        it 'can report that NOT all ships have been sunk' do
+          subject.place ship
+          expect(subject.all_ships_sunk).to eq "Keep playing. Ships be floatin'"
+        end
+
+      end
 
 
     end
