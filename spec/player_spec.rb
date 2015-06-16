@@ -11,16 +11,20 @@ describe Player do
   end
 
   context 'playing on a board with a ship at C4' do
-    
+
     ## when testing the player, TEST THE PLAYER = stubbing the board with
     ## 'strike' is not a problem here
 
-    let(:ship) {double :ship, position: 'C4', status: :floating}
-    let(:board) {double :board, strike: 'HIT!'} 
+    let(:board) {double :board, strike: 'HIT!'}
     subject { Player.new(board) }
 
     it 'can tell us when a ship is hit' do
       expect(subject.receive_strike "C4").to eq 'HIT!'
+    end
+
+    it 'can report hit positions' do
+      subject.receive_strike "C4"
+      expect(subject.hits).to eq ["C4"]
     end
 
   end

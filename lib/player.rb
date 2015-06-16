@@ -1,7 +1,10 @@
 class Player
 
+  attr_reader :hits
+
   def initialize board
     @board = board
+    @hits = []
   end
 
   # def place ship
@@ -13,6 +16,7 @@ class Player
   end
 
   def receive_strike coordinate
+    hits << coordinate
     @board.strike coordinate
   end
 
