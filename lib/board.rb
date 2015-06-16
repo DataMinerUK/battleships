@@ -1,8 +1,6 @@
-require_relative 'ship'
-
 class Board
 
-attr_accessor :board
+attr_reader :board
 
 def initialize
   @board = []
