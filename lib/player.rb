@@ -13,7 +13,7 @@ class Player
   end
 
   def receive_strike coordinate
-
+    @board.strike coordinate
   end
 
 

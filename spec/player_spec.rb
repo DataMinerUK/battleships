@@ -1,6 +1,4 @@
 require 'player'
-require 'board'
-
 
 describe Player do
 
@@ -12,14 +10,17 @@ describe Player do
     expect(subject.lost?).to eq true
   end
 
-
   context 'playing on a board with a ship at C4' do
+    
+    ## when testing the player, TEST THE PLAYER = stubbing the board with
+    ## 'strike' is not a problem here
+
     let(:ship) {double :ship, position: 'C4', status: :floating}
-    let(:board) {[:ship]}
-    subject { Player.new(:board) }
+    let(:board) {double :board, strike: 'HIT!'} 
+    subject { Player.new(board) }
 
     it 'can tell us when a ship is hit' do
-      expect(subject.receive_strike 'C4').to eq 'HIT!'
+      expect(subject.receive_strike "C4").to eq 'HIT!'
     end
 
   end
