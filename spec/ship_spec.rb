@@ -25,6 +25,9 @@ let (:ship){Ship.new 'C4'}
         expect(ship.status).to eq :sunk
     end
 
+
+
+
   end
 
 

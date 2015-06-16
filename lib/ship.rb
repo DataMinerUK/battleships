@@ -13,16 +13,8 @@ attr_accessor :position
     @status = :floating
   end
 
-def hit
-  @status = :sunk
-end
-
-  # def sunk
-  #   if true
-  #     'ship is sunk'
-  #   end
-  # end
-
-
+  def hit
+    @status = :sunk
+  end
 
 end
