@@ -14,10 +14,17 @@ def place ship
 end
 
 def hit position
-  board.find { |ship| ship.hit if ship.position == position }
+  board.find do |ship|
+    if ship.position == position
+      ship.hit
+      puts "HIT!"
+    else
+      puts "MISS!"
+    end
+  end
 end
 
-def all_ships_sunk
+def all_ships_sunk?
 
 end
 
