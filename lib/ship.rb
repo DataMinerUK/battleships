@@ -7,11 +7,13 @@ attr_reader :status
 attr_reader :position
 attr_reader :hits
 attr_reader :size
+attr_reader :orientation
 
 
-  def initialize position, size
+  def initialize position, size, orientation
     @position = position
     @size = size
+    @orientation = orientation
     @status = :floating
     @hits = 0
   end

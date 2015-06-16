@@ -1,7 +1,7 @@
 require 'ship'
 
 describe 'Ship' do
-let (:ship){Ship.new 'C4', 1}
+let (:ship){Ship.new 'C4', 1, :vertical}
 
   context 'Ship Creation' do
 
@@ -12,6 +12,15 @@ let (:ship){Ship.new 'C4', 1}
     it 'is in its position when created' do
       expect(ship.position).to_not eq 'C5'
     end
+
+    it 'has a size' do
+      expect(ship.size).to eq 1
+    end
+
+    it 'has an orientation' do
+      expect(ship.orientation).to eq :vertical
+    end
+    
   end
   
   context 'Ship Status' do
@@ -28,10 +37,6 @@ let (:ship){Ship.new 'C4', 1}
     it 'can be hit and records the number of hits' do
       ship.hit
       expect(ship.hits).to eq 1
-    end
-
-    it 'has a size when created' do
-      expect(ship.size).to eq 1
     end
 
   end
