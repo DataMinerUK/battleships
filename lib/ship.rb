@@ -1,5 +1,3 @@
-require_relative 'board'
-
 class Ship
 
 #can be hit
@@ -18,7 +16,3 @@ attr_accessor :position
   end
 
 end
-
-
-
-

@@ -1,39 +1,39 @@
 class Board
 
-attr_reader :board
+  attr_reader :board
 
-def initialize
-  @board = []
+  def initialize
+    @board = []
 
-end
-
-def place ship
-  board << ship
-end
-
-def strike coordinate
-  if board.map {|ship| ship.position}.include? (coordinate)
-     board.select {|ship| ship.position == coordinate}[0].hit
-    "HIT!"
-  else
-    "MISS!"
   end
 
-end
+  def place ship
+    board << ship
+  end
 
-def all_ships_sunk?
-  board.all? {|ship| ship.status == :sunk}
-  #    'You win! All ships have been sunk BIOTCH'
-  #  else
-  #    "Keep playing. Ships be floatin'"
-  #  end
-end
+  def strike coordinate
+    if board.map {|ship| ship.position}.include? (coordinate)
+       board.select {|ship| ship.position == coordinate}[0].hit
+      "HIT!"
+    else
+      "MISS!"
+    end
+
+  end
+
+  def all_ships_sunk?
+    board.all? {|ship| ship.status == :sunk}
+    #    'You win! All ships have been sunk BIOTCH'
+    #  else
+    #    "Keep playing. Ships be floatin'"
+    #  end
+  end
 
 
-def empty?
-  @board.empty?
-end
+  def empty?
+    @board.empty?
+  end
 
-  # board = Array.new(10, " ").map {|row| Array.new(10, " ")}
+    # board = Array.new(10, " ").map {|row| Array.new(10, " ")}
 
 end
