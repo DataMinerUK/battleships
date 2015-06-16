@@ -11,7 +11,7 @@ def place ship
   board << ship
 end
 
-def hit coordinate
+def strike coordinate
   if board.map {|ship| ship.position}.include? (coordinate)
      board.select {|ship| ship.position == coordinate}[0].hit
     "HIT!"
@@ -21,12 +21,12 @@ def hit coordinate
 
 end
 
-def all_ships_sunk
-   if board.all? {|ship| ship.status == :sunk}
-     'You win! All ships have been sunk BIOTCH'
-   else
-     "Keep playing. Ships be floatin'"
-   end
+def all_ships_sunk?
+  board.all? {|ship| ship.status == :sunk}
+  #    'You win! All ships have been sunk BIOTCH'
+  #  else
+  #    "Keep playing. Ships be floatin'"
+  #  end
 end
 
 
