@@ -25,7 +25,10 @@ let (:ship){Ship.new 'C4'}
         expect(ship.status).to eq :sunk
     end
 
-
+    it 'can be hit and records the number of hits' do
+      ship.hit
+      expect(ship.hits).to eq 1
+    end
 
 
   end
