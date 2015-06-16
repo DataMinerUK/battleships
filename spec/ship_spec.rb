@@ -1,7 +1,7 @@
 require 'ship'
 
 describe 'Ship' do
-let (:ship){Ship.new 'C4'}
+let (:ship){Ship.new 'C4', 1}
 
   context 'Ship Creation' do
 
@@ -30,6 +30,9 @@ let (:ship){Ship.new 'C4'}
       expect(ship.hits).to eq 1
     end
 
+    it 'has a size when created' do
+      expect(ship.size).to eq 1
+    end
 
   end
 
