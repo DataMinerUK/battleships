@@ -9,9 +9,9 @@ class Player
     @misses = []
   end
 
-  # def place ship
-  #   @board.place ship
-  # end
+  def place ship
+    @board.place ship
+  end
 
   def lost?
     @board.all_ships_sunk?
@@ -19,7 +19,7 @@ class Player
 
   def receive_strike coordinate
     shot = @board.strike coordinate
-    if shot == 'HIT!' 
+    if shot == 'HIT!'
       hits << coordinate
     else shot == 'MISS!'
       misses << coordinate
