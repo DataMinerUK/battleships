@@ -11,12 +11,10 @@ end
 
 def place ship
   board << ship
-  # .position
 end
 
 def hit position
-  # board.include?(position) ? 'HIT!' : 'MISS!'
-  board.each { |ship| ship.hit if ship.position == position }
+  board.find { |ship| ship.hit if ship.position == position }
 end
 
 def all_ships_sunk

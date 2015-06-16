@@ -9,7 +9,7 @@ it 'should be able to place ships' do
   expect(subject).not_to be_empty
 end
 
-  context 'when shooting'
+  context 'when shooting' do
   
     it 'hits a ship on location' do
       subject.place ship
@@ -25,9 +25,8 @@ end
       expect(ship).not_to have_received(:hit)
     end
 
-    it 
 
-    it 'can report that all ships are sunk' do
+    xit 'can report that all ships are sunk' do
       expect(subject).to respond_to :all_ships_sunk
     end
 
