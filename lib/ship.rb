@@ -19,8 +19,8 @@ attr_reader :orientation
   end
 
   def hit
-    @status = :sunk
     @hits += 1
+    @status = :sunk if @hits == @size
   end
 
 
