@@ -25,7 +25,7 @@ def hit position
 end
 
 def all_ships_sunk?
-
+  board.all? {|ship| ship.status == :sunk} 
 end
 
 
