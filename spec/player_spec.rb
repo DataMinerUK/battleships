@@ -20,24 +20,24 @@ describe Player do
     ## when testing the player, TEST THE PLAYER = stubbing the board with
     ## 'strike' is not a problem here, and you have to do it
     ## because receive_strike is calling the method "strike" on the board
-    GIVEN_LOCATION = "C4"
+    LOCATION = "C4"
     let(:board) { double :board, strike: 'HIT!' }
     subject { Player.new(board) }
 
     it 'can tell us when a ship is hit' do
-      expect(subject.receive_strike GIVEN_LOCATION).to eq 'HIT!'
+      expect(subject.receive_strike LOCATION).to eq 'HIT!'
     end
 
     it 'raises an error when hitting the same place twice' do
-      subject.receive_strike GIVEN_LOCATION
-      expect {subject.receive_strike GIVEN_LOCATION}.to raise_error "You have already shot here"
+      subject.receive_strike LOCATION
+      expect {subject.receive_strike LOCATION}.to raise_error "You have already shot here"
     end
 
     context 'when player hits a ship' do
 
       it 'can report hit positions' do
-        subject.receive_strike GIVEN_LOCATION
-        expect(subject.hits).to eq [GIVEN_LOCATION]
+        subject.receive_strike LOCATION
+        expect(subject.hits).to eq [LOCATION]
       end
 
     end
@@ -53,8 +53,8 @@ describe Player do
       end
 
       it 'raises an error when missing the same place twice' do
-        subject.receive_strike GIVEN_LOCATION
-        expect{subject.receive_strike GIVEN_LOCATION}.to raise_error "You have already shot here"
+        subject.receive_strike LOCATION
+        expect{subject.receive_strike LOCATION}.to raise_error "You have already shot here"
       end
 
     end
