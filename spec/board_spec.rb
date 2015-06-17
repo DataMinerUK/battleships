@@ -3,6 +3,8 @@ require 'board'
 describe Board do
 let (:ship){double :ship, position: ["C4", "C5", "C6"]}
 
+  it { is_expected.to respond_to :dimension }
+
 
   it 'should be able to place ships' do
     subject.place ship
