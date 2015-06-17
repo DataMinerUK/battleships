@@ -10,10 +10,11 @@ class Board
   end
 
   def bottom_right
-    alphabet[dimension-1].upcase + (dimension - 1).to_s
+    alphabet[dimension-1] + (dimension - 1).to_s
   end
 
   def place ship
+    fail 'Ship is outside the board' if ship.outside_board?
     board << ship
   end
 
@@ -47,13 +48,23 @@ class Board
     @board.empty?
   end
 
-    # board = Array.new(10, " ").map {|row| Array.new(10, " ")}
+  def outside_board? ship
+    last_row = dimension - 1
+    last_column = alphabet[dimension-1].upcase
+
+    to_check = ship.position.last
+    x_coordinate_of_ship = to_check.gsub(/[^A-Z]/, '')
+    y_coordinate_of_ship = to_check.gsub(/[^0-9]/, '').to_i
+
+    (x_coordinate_of_ship > last_column) || (y_coordinate_of_ship > last_row)
+
+  end
 
 
-    private 
+    private
 
     def alphabet
-      alphabet = ('a'..'z').to_a
+      alphabet = ('A'..'Z').to_a
     end
 
 end
