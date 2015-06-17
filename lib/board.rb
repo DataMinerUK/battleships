@@ -57,10 +57,31 @@ class Board
     y_coordinate_of_ship = to_check.gsub(/[^0-9]/, '').to_i
 
     (x_coordinate_of_ship > last_column) || (y_coordinate_of_ship > last_row)
+  
+    # this method is testing whether the 'ship' is outside the board.
+    # we are 'checking' whether the _last_ element in the 'ship position array' is outside of the board, because if it is - the ship is definitely outside the board.
+    # considering _last_ does not return an array, just the string with a letter "C" and number "4", we need to use regular expressions.
+    # passing .gsub(/[^A-Z]/, '') and .gsub(/[^0-9]/, '').to_i) uses ^ to find and extract ONLY the respective letters or numbers.
+    # the "C" in "C4" is the x-coordinate, and the "4" is the y-coordinate.
+    # therefore if the x coordinate of the ship is > the last column, it must be outside the board.
+    # same with the y coordinate and the last row.
+
   end
 
   def position_occupied? ship
     !(board.map {|ship| ship.position}.flatten & ship.position).empty?
+  
+    # board.position_occupied? ship
+    # this method is testing whether or not the position you're trying to place 'ship' on is occupied.
+    # we are flattening the array that is returned by board.map (which creates a new array with arrays of ship positions)
+    # the ship.position is the position of the ship we are trying to place, which is an array itself.
+    # we are then using the 'intersect' method - & - which will return any commonality between the two arrays
+    # if the two arrays intersect it means a ship is already in the position you're trying to place your next ship, and the array will not be empty.
+    # if there is no intersection between the two arrays, you can place your ship
+    
+    # what we want to test is that the 'intersection array' is NOT empty - hence the bang.
+    # if the intersection array is empty, the condition returns false, which means that position is NOT occupied and you can place your ship 
+
   end
 
     private
