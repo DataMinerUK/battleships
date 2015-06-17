@@ -11,15 +11,21 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
       expect(subject.bottom_right).to eq "J9"
     end
 
-
     it 'should be able to place ships' do
       subject.place ship
       expect(subject).not_to be_empty
     end
 
-    it 'should know when a ship is outside the board' do
-      ship_outside_board = double :ship, position: ["J8", "J9", "J10"]
-      expect(subject.outside_board? ship_outside_board).to eq true
+    context 'when placing a ship outside the board' do
+      let (:ship_not_on_board){double :ship, position: ["J8", "J9", "J10"]}
+
+      it 'should know that ship is outside board' do
+        expect(subject.outside_board? ship_not_on_board).to eq true
+      end
+
+      it 'should raise an error when placing ship outside board' do
+        expect{subject.place ship_not_on_board}.to raise_error 'Ship is outside the board'
+      end
     end
 
   end
@@ -44,7 +50,7 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
 
        context 'when testing sunk ships' do
 
-         let (:ship){double :ship, position: "C4", status: :sunk, outside_board?: false}
+         let (:ship){double :ship, position: ["C4"], status: :sunk, outside_board?: false}
 
         it 'can report that all ships are sunk' do
           subject.place ship
@@ -54,7 +60,7 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
 
       context 'when testing floating ships' do
 
-        let (:ship){double :ship, position: "C4", status: :floating, outside_board?: false}
+        let (:ship){double :ship, position: ["C4"], status: :floating, outside_board?: false}
 
         it 'can report that NOT all ships have been sunk' do
           subject.place ship

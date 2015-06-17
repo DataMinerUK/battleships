@@ -6,7 +6,6 @@ class Board
   def initialize dimension=10
     @dimension = dimension
     @board = []
-
   end
 
   def bottom_right
@@ -14,7 +13,7 @@ class Board
   end
 
   def place ship
-    fail 'Ship is outside the board' if ship.outside_board?
+    fail 'Ship is outside the board' if outside_board? ship
     board << ship
   end
 
