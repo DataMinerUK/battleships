@@ -1,7 +1,7 @@
 require 'ship'
 
 describe 'Ship' do
-let (:ship){Ship.new 'C4', 2, :vertical}
+let (:ship){Ship.new 'C4', 2, :horizontal}
 
   context 'Creation' do
 
@@ -18,19 +18,19 @@ let (:ship){Ship.new 'C4', 2, :vertical}
     end
 
     it 'has an orientation' do
-      expect(ship.orientation).to eq :vertical
+      expect(ship.orientation).to eq :horizontal
     end
 
     context 'larger ships vertical creation' do
 
-      it 'occupies a number of positions when placed vertically' do
+      it 'occupies a number of positions when placed horizontally' do
         expect(ship.position).to eq ['C4', 'D4']
       end
 
     context 'larger ships horizontal creation' do
-      let (:ship) {Ship.new 'C4', 3, :horizontal}
+      let (:ship) {Ship.new 'C4', 3, :vertical}
 
-      it 'occupies a number of positions when placed horizontally' do
+      it 'occupies a number of positions when placed vertically' do
         expect(ship.position).to eq ['C4', 'C5', 'C6']
       end
 

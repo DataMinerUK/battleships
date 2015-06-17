@@ -11,7 +11,7 @@ attr_reader :orientation
 attr_reader :starting_point
 
 
- # orientation can be ANY string - problem. 
+ # orientation can be ANY string - problem.
 
   def initialize starting_point, size, orientation
     @starting_point = starting_point
@@ -32,7 +32,7 @@ attr_reader :starting_point
 
     # Creating the positions array (on INITIALIZATION), which must, in terms of ordering, come after starting_point, size, and orientation
     # because they need to be passed for the ship to be created.
-    
+
     # the positions array takes the letter ("C") and number ("4") and splits them into two variables.
     # first we are assuming the ship is horizontal, so we will focus on the letter.next (!) is necessary to change the letter to the next letter, instead of just "returning" it
     # hence we change the letter ".next!", size number of times to create the vertical ship.
@@ -40,13 +40,13 @@ attr_reader :starting_point
     positions_array = []
     letter = starting_point[0]
     number = starting_point[1]
-    to_change = (letter if orientation == :vertical) || (number if orientation == :horizontal)
+    to_change = (letter if orientation == :horizontal) || (number if orientation == :vertical)
 
       size.times do
       positions_array << letter + number
       to_change.next!
       end
-  
+
     positions_array
 
   end
