@@ -28,6 +28,9 @@ class Player
     shot
   end
 
+  
+
+
   private
 
   def hits_and_misses

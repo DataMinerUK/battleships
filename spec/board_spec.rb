@@ -5,6 +5,10 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"]}
 
   it { is_expected.to respond_to :dimension }
 
+  it 'in its default state (10x10), the bottom right coordinate is J9' do
+    expect(subject.bottom_right).to eq "J9"
+  end
+
 
   it 'should be able to place ships' do
     subject.place ship
