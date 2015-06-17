@@ -18,6 +18,7 @@ class Player
   end
 
   def receive_strike coordinate
+    fail "You have already shot here" if hits_and_misses.include? coordinate
     shot = @board.strike coordinate
     if shot == 'HIT!'
       hits << coordinate
@@ -26,5 +27,12 @@ class Player
     end
     shot
   end
+
+  private
+
+  def hits_and_misses
+    hits + misses
+  end
+
 
 end
