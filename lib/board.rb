@@ -14,6 +14,7 @@ class Board
 
   def place ship
     fail 'Ship is outside the board' if outside_board? ship
+    fail 'There is a ship already there!' if position_occupied? ship
     board << ship
   end
 
@@ -56,9 +57,11 @@ class Board
     y_coordinate_of_ship = to_check.gsub(/[^0-9]/, '').to_i
 
     (x_coordinate_of_ship > last_column) || (y_coordinate_of_ship > last_row)
-
   end
 
+  def position_occupied? ship
+    !(board.map {|ship| ship.position}.flatten & ship.position).empty?
+  end
 
     private
 

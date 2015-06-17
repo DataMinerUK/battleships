@@ -11,21 +11,32 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
       expect(subject.bottom_right).to eq "J9"
     end
 
-    it 'should be able to place ships' do
-      subject.place ship
-      expect(subject).not_to be_empty
-    end
+    context 'when placing ships' do
 
-    context 'when placing a ship outside the board' do
-      let (:ship_not_on_board){double :ship, position: ["J8", "J9", "J10"]}
-
-      it 'should know that ship is outside board' do
-        expect(subject.outside_board? ship_not_on_board).to eq true
+      it 'should be able to place ships' do
+        subject.place ship
+        expect(subject).not_to be_empty
       end
 
-      it 'should raise an error when placing ship outside board' do
-        expect{subject.place ship_not_on_board}.to raise_error 'Ship is outside the board'
+      it 'should not allow ships to overlap' do
+        subject.place ship
+        expect{ subject.place ship }.to raise_error 'There is a ship already there!'
+
       end
+
+      context 'when placing a ship outside the board' do
+
+        let (:ship_not_on_board){double :ship, position: ["J8", "J9", "J10"]}
+
+        it 'should know that ship is outside board' do
+          expect(subject.outside_board? ship_not_on_board).to eq true
+        end
+
+        it 'should raise an error when placing ship outside board' do
+          expect{subject.place ship_not_on_board}.to raise_error 'Ship is outside the board'
+        end
+      end
+
     end
 
   end
