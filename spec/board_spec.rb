@@ -1,7 +1,7 @@
 require 'board'
 
 describe Board do
-let (:ship){double :ship, position: "C4"}
+let (:ship){double :ship, position: ["C4", "C5", "C6"]}
 
 
   it 'should be able to place ships' do
@@ -21,7 +21,7 @@ let (:ship){double :ship, position: "C4"}
       it 'does not hit a ship' do
         subject.place ship
         allow(ship).to receive(:hit)
-        subject.strike "C5"
+        subject.strike "D5"
         expect(ship).not_to have_received(:hit)
       end
 

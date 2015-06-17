@@ -12,8 +12,8 @@ class Board
   end
 
   def strike coordinate
-    if board.map {|ship| ship.position}.include? (coordinate)
-       board.select {|ship| ship.position == coordinate}[0].hit
+    if board.map {|ship| ship.position}.flatten.include? (coordinate)
+       board.select {|ship| ship.position.include?(coordinate)}[0].hit
       "HIT!"
     else
       "MISS!"
