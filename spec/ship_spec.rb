@@ -5,12 +5,12 @@ let (:ship){Ship.new 'C4', 2, :vertical}
 
   context 'Creation' do
 
-    it 'knows its position when its created' do
-      expect(ship.position).to eq 'C4'
-    end
+    # it 'knows its position when its created' do
+    #   expect(ship.positions).to eq ['C4']
+    # end
 
     it 'is in its position when created' do
-      expect(ship.position).to_not eq 'C5'
+      expect(ship.position).to_not eq ['C5']
     end
 
     it 'has a size' do
@@ -19,6 +19,14 @@ let (:ship){Ship.new 'C4', 2, :vertical}
 
     it 'has an orientation' do
       expect(ship.orientation).to eq :vertical
+    end
+
+    context 'larger ships' do
+
+      it 'has a set of positions when ship is placed vertically' do
+        expect(ship.position).to eq ['C4', 'D4']
+      end
+
     end
 
   end
@@ -30,8 +38,7 @@ let (:ship){Ship.new 'C4', 2, :vertical}
     end
 
     it 'can be sunk' do
-        ship.hit
-        ship.hit
+        ship.size.times {ship.hit}
         expect(ship.status).to eq :sunk
     end
 
