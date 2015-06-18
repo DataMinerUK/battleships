@@ -19,6 +19,8 @@ attr_reader :status, :position, :size, :hits, :orientation, :starting_point
     @status = :sunk if @hits == @size
   end
 
+  private
+
   def create_position
 
     # Creating the positions array (on INITIALIZATION), which must, in terms of ordering, come after starting_point, size, and orientation
