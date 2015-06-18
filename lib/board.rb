@@ -3,13 +3,16 @@ class Board
   attr_reader :board
   attr_reader :dimension
 
-  def initialize dimension=10
+  def initialize dimension =10
     @dimension = dimension
     @board = []
   end
 
   def bottom_right
     alphabet[dimension-1] + (dimension - 1).to_s
+
+    # the alphabet is an array, we want to extract the 9th element of the array (which is the 10th considering zeroth numbering)
+    # hence alphabet[dimension-1] gets the X coordinate, then we add the dimension-1 to get the Y coordinate, but since alphabet is in string format you need .to_s
   end
 
   def place ship
@@ -27,7 +30,7 @@ class Board
       "MISS!"
     end
 
-  # board.map {|ship| ship.position} mapping out the positions of the ships in the board array [the mapped array is an array of arrays with each ship locations as an element] because we've specified ship.position as the parameter
+    # board.map {|ship| ship.position} mapping out the positions of the ships in the board array [the mapped array is an array of arrays with each ship locations as an element] because we've specified ship.position as the parameter
     # we need to use flatten in order for the mapped out "array of arrays" that is being produced with ship coordinates to become a single array containing ALL coordinates as individual elements
     # we are checking with "include?" if the coordinate that is being struck is present in the mapped out array, and the include statement returns true/false
     # if it is true, the next line of code will execute

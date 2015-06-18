@@ -21,7 +21,6 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
       it 'should not allow ships to overlap' do
         subject.place ship
         expect{ subject.place ship }.to raise_error 'There is a ship already there!'
-
       end
 
       context 'when placing a ship outside the board' do
@@ -59,7 +58,7 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
 
       it { is_expected.to respond_to :all_ships_sunk? }
 
-       context 'when testing sunk ships' do
+       context 'when testing sunken ships' do
 
          let (:ship){double :ship, position: ["C4"], status: :sunk, outside_board?: false}
 

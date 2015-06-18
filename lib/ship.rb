@@ -1,17 +1,6 @@
 class Ship
 
-#can be hit
-#knows when it has been sunk
-#can change sizes? or different classes for each ship?
-attr_reader :status
-attr_reader :position
-attr_reader :hits
-attr_reader :size
-attr_reader :orientation
-attr_reader :starting_point
-
-
- # orientation can be ANY string - problem.
+attr_reader :status, :position, :hits, :size, :orientation, :starting_point
 
   def initialize starting_point, size, orientation
     @starting_point = starting_point

@@ -1,7 +1,6 @@
 class Player
 
-  attr_reader :hits
-  attr_reader :misses
+  attr_reader :hits, :misses 
 
   def initialize board
     @board = board
@@ -28,7 +27,7 @@ class Player
     shot
   end
 
-  
+
 
 
   private

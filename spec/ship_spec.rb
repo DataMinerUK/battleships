@@ -27,14 +27,23 @@ let (:ship){Ship.new 'C4', 2, :horizontal}
         expect(ship.position).to eq ['C4', 'D4']
       end
 
-    context 'larger ships horizontal creation' do
-      let (:ship) {Ship.new 'C4', 3, :vertical}
+      context 'larger ships horizontal creation' do
+        let (:ship) {Ship.new 'C4', 3, :vertical}
 
-      it 'occupies a number of positions when placed vertically' do
-        expect(ship.position).to eq ['C4', 'C5', 'C6']
+        it 'occupies a number of positions when placed vertically' do
+          expect(ship.position).to eq ['C4', 'C5', 'C6']
+        end
+
+        context 'initializing various ship types' do
+
+          it 'creates an aircraft carrier' do
+            aircraft_carrier = Ship.aircraft_carrier
+            expect(aircraft_carrier.size).to eq 5
+          end
+
+        end
+      
       end
-
-    end
 
     end
 

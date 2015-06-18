@@ -20,9 +20,9 @@ describe Player do
     ## when testing the player, TEST THE PLAYER = stubbing the board with
     ## 'strike' is not a problem here, and you have to do it
     ## because receive_strike is calling the method "strike" on the board
+    
     LOCATION = "C4"
-    let(:board) { double :board, strike: 'HIT!' }
-    subject { Player.new(board) }
+    subject { Player.new(double :board, strike: 'HIT!') }
 
     it 'can tell us when a ship is hit' do
       expect(subject.receive_strike LOCATION).to eq 'HIT!'
