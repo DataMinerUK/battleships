@@ -29,17 +29,16 @@ attr_reader :status, :position, :size, :hits, :orientation, :starting_point
     # hence we change the letter ".next!", size number of times to create the vertical ship.
 
     positions_array = []
-    letter = starting_point[0]
-    number = starting_point[1]
+    letter = starting_point.scan(/[A-Z]/).join
+    number = starting_point.scan(/[0-9]/).join
     to_change = (letter if orientation == :horizontal) || (number if orientation == :vertical)
 
-      size.times do
+    size.times do
       positions_array << letter + number
       to_change.next!
-      end
+    end
 
     positions_array
-
   end
 
 end
