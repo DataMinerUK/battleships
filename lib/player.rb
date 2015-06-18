@@ -1,6 +1,8 @@
+require_relative 'board'
+
 class Player
 
-  attr_reader :hits, :misses 
+  attr_reader :hits, :misses
 
   def initialize board
     @board = board

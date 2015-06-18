@@ -1,6 +1,11 @@
-class Ship
 
-attr_reader :status, :position, :hits, :size, :orientation, :starting_point
+
+class Ship
+attr_reader :status, :position, :size, :hits, :orientation, :starting_point
+
+  def self.aircraft_carrier starting_point, orientation
+    self.new starting_point, 5, orientation
+  end
 
   def initialize starting_point, size, orientation
     @starting_point = starting_point

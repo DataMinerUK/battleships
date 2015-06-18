@@ -37,12 +37,12 @@ let (:ship){Ship.new 'C4', 2, :horizontal}
         context 'initializing various ship types' do
 
           it 'creates an aircraft carrier' do
-            aircraft_carrier = Ship.aircraft_carrier
+            aircraft_carrier = Ship.aircraft_carrier('C4', :vertical)
             expect(aircraft_carrier.size).to eq 5
           end
 
         end
-      
+
       end
 
     end
