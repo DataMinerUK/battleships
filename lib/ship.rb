@@ -40,7 +40,10 @@ attr_reader :status, :position, :size, :hits, :orientation, :starting_point
 
   end
 
-  private
+  private 
+
+
+  size = { destroyer: 3}
 
   def self.aircraft_carrier starting_point, orientation
     self.new starting_point, 5, orientation
