@@ -1,12 +1,7 @@
-
-
 class Ship
 attr_reader :status, :position, :size, :hits, :orientation, :starting_point
 
-  def self.aircraft_carrier starting_point, orientation
-    self.new starting_point, 5, orientation
-  end
-
+  
   def initialize starting_point, size, orientation
     @starting_point = starting_point
     @size = size
@@ -43,6 +38,28 @@ attr_reader :status, :position, :size, :hits, :orientation, :starting_point
 
     positions_array
 
+  end
+
+  private
+
+  def self.aircraft_carrier starting_point, orientation
+    self.new starting_point, 5, orientation
+  end
+
+  def self.battleship starting_point, orientation
+    self.new starting_point, 4, orientation
+  end
+
+  def self.submarine starting_point, orientation
+    self.new starting_point, 3, orientation
+  end
+
+  def self.destroyer starting_point, orientation
+    self.new starting_point, 3, orientation
+  end
+
+  def self.boat starting_point, orientation
+    self.new starting_point, 2, orientation
   end
 
 end
