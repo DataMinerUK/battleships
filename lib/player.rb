@@ -21,11 +21,7 @@ class Player
   def receive_strike coordinate
     fail "You have already shot here" if hits_and_misses.include? coordinate
     shot = @board.strike coordinate
-    if shot == 'HIT!'
-      hits << coordinate
-    else shot == 'MISS!'
-      misses << coordinate
-    end
+    shot == 'HIT!' ? hits << coordinate : misses << coordinate
     shot
   end
 
