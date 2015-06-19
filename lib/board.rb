@@ -2,8 +2,7 @@ require_relative 'ship'
 
 class Board
 
-  attr_reader :board
-  attr_reader :dimension
+  attr_reader :board, :dimension
 
   def initialize dimension =10
     @dimension = dimension
@@ -24,7 +23,7 @@ class Board
     else
       "MISS!"
     end
-
+  end
     # board.map {|ship| ship.position} mapping out the positions of the ships in the board array [the mapped array is an array of arrays with each ship locations as an element] because we've specified ship.position as the parameter
     # we need to use flatten in order for the mapped out "array of arrays" that is being produced with ship coordinates to become a single array containing ALL coordinates as individual elements
     # we are checking with "include?" if the coordinate that is being struck is present in the mapped out array, and the include statement returns true/false
@@ -36,8 +35,6 @@ class Board
     # select returns |ship| based on the condition given after it
     # map is going to look at each |ship| and return ship.position
 
-  end
-
   def all_ships_sunk?
     board.all? {|ship| ship.status == :sunk}
   end
@@ -46,32 +43,9 @@ class Board
     @board.empty?
   end
 
-  def outside_board? ship
-    last_column = bottom_right_letter
-    last_row = dimension - 1
-
-    to_check = ship.position.last
-    x_coordinate_of_ship = to_check.scan(/[A-Z]/).join
-    y_coordinate_of_ship = (to_check.scan(/[0-9]/).join).to_i
-
-    (x_coordinate_of_ship.length > last_column.length || x_coordinate_of_ship > last_column) || (y_coordinate_of_ship > last_row)
-
-    # this method is testing whether the 'ship' is outside the board.
-    # we are 'checking' whether the _last_ element in the 'ship position array' is outside of the board, because if it is - the ship is definitely outside the board.
-    # considering _last_ does not return an array, just the string with a letter "C" and number "4", we need to use regular expressions.
-    # passing .scan(/[A-Z]/).join and .scan(/[0-9]/).join to produce an array of matches and joining them
-    # the "C" in "C4" is the x-coordinate, and the "4" is the y-coordinate.
-    # therefore if the x coordinate of the ship is > the last column, it must be outside the board.
-    # to account for when our board is larger than the alphabet
-    # we need to test if the number of letters in the x coordinate is greater than our last column such that,
-    # for example "AA" > "Z"
-    # same with the y coordinate and the last row.
-
-  end
-
   def position_occupied? ship
     !(all_ships_positions & ship.position).empty?
-
+  end
     # board.position_occupied? ship
     # this method is testing whether or not the position you're trying to place 'ship' on is occupied.
     # we are flattening the array that is returned by board.map (which creates a new array with arrays of ship positions)
@@ -83,21 +57,51 @@ class Board
     # what we want to test is that the 'intersection array' is NOT empty - hence the bang.
     # if the intersection array is empty, the condition returns false, which means that position is NOT occupied and you can place your ship
 
+  def outside_board? ship
+    (last_x_coordinate_outside? ship) || (last_y_coordinate_outside? ship)
+  end
+    # this method is testing whether the 'ship' is outside the board.
+    # we are 'checking' whether the _last_ element in the 'ship position array' is outside of the board, because if it is - the ship is definitely outside the board.
+    # considering _last_ does not return an array, just the string with a letter "C" and number "4", we need to use regular expressions.
+    # passing .scan(/[A-Z]/).join and .scan(/[0-9]/).join to produce an array of matches and joining them
+    # the "C" in "C4" is the x-coordinate, and the "4" is the y-coordinate.
+    # therefore if the x coordinate of the ship is > the last column, it must be outside the board.
+    # to account for when our board is larger than the alphabet
+    # we need to test if the number of letters in the x coordinate is greater than our last column such that,
+    # for example "AA" > "Z"
+    # same with the y coordinate and the last row.
+
+  private
+
+  def last_x_coordinate_outside? ship
+    last_column_on_board = bottom_right_letter
+
+    to_check = ship.position.last
+    x_coordinate_of_ship = to_check.scan(/[A-Z]/).join
+
+    x_coordinate_of_ship.length > last_column_on_board.length || x_coordinate_of_ship > last_column_on_board
   end
 
-    private
+  def last_y_coordinate_outside? ship
+    last_row_on_board = dimension - 1
 
-    def alphabet
-      num_of_Z = 'Z' * (dimension/26 + 1)
-      alphabet = ('A'..num_of_Z).to_a
-    end
+    to_check = ship.position.last
+    y_coordinate_of_ship = (to_check.scan(/[0-9]/).join).to_i
 
-    def bottom_right_letter
-      alphabet[dimension-1]
-    end
+    y_coordinate_of_ship > last_row_on_board
+  end
 
-    def all_ships_positions
-      board.map{|ship| ship.position}.flatten
-    end
+  def alphabet
+    num_of_Z = 'Z' * (dimension/26 + 1)
+    alphabet = ('A'..num_of_Z).to_a
+  end
+
+  def bottom_right_letter
+    alphabet[dimension-1]
+  end
+
+  def all_ships_positions
+    board.map{|ship| ship.position}.flatten
+  end
 
 end
