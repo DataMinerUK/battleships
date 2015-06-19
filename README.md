@@ -43,6 +43,7 @@ Player
 
 * Instances are asked for an argument which should be a Board object
 * On initialization it is given an empty array for hits and an empty array for misses
+* Eg `<Player:0x007fdfa2838180 @board=#<Board:0x007fdfa2838220 @dimension=10, @board=[]>, @hits=[], @misses=[]>`
 * It can place a ship using the board place method
 * It can check if it has lost by calling the board all_ships_sunk? method
 * It can receive a strike at a coordinate, checking to see if that coordinate has already been logged in its arrays and if not it uses the boards strike method to either hit a ship and record the coordinate in its hits array or record it in its misses array
