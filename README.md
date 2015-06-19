@@ -66,10 +66,10 @@ Play in IRB
  => #<Player:0x007fdfa307cf08 @board=#<Board:0x007fdfa30953f0 @dimension=10, @board=[]>, @hits=[], @misses=[]>
 2.0.0-p247 :015 > player.place boat
 2.0.0-p247 :016 > player.place destroyer
-RuntimeError: Ship is outside the board ...
+RuntimeError: ship is outside the board ...
 2.0.0-p247 :017 > player.place submarine
 2.0.0-p247 :018 > player.place aircraft_carrier
-RuntimeError: There is a ship already there! ...
+RuntimeError: there is a ship already there! ...
 2.0.0-p247 :019 > player.receive_strike "D4"
  => "HIT!"
 2.0.0-p247 :020 > player.receive_strike "F7"
@@ -79,7 +79,7 @@ RuntimeError: There is a ship already there! ...
 2.0.0-p247 :022 > player.misses
  => ["F7"]
 2.0.0-p247 :023 > player.receive_strike "D4"
-RuntimeError: You have already shot here
+RuntimeError: you have already shot here ...
 2.0.0-p247 :024 > player.lost?
  => false
 2.0.0-p247 :025 > board
