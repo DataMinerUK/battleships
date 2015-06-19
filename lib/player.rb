@@ -22,7 +22,7 @@ class Player
     fail "You have already shot here" if hits_and_misses.include? coordinate
     shot = @board.strike coordinate
     shot == 'HIT!' ? hits << coordinate : misses << coordinate
-    shot
+    lost? ? 'GAME OVER!' : shot
   end
 
 

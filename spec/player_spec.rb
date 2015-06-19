@@ -24,7 +24,7 @@ describe Player do
     ## because receive_strike is calling the method "strike" on the board
 
     LOCATION = "C4"
-    subject { Player.new(double :board, strike: 'HIT!') }
+    subject { Player.new(double :board, strike: 'HIT!', all_ships_sunk?: false) }
 
     it 'can tell us when a ship is hit' do
       expect(subject.receive_strike LOCATION).to eq 'HIT!'
@@ -46,7 +46,7 @@ describe Player do
 
     context 'when player misses a ship' do
 
-      let(:board) { double :board, strike: 'MISS!'}
+      let(:board) { double :board, strike: 'MISS!', all_ships_sunk?: false}
       subject { Player.new(board) }
 
       it 'can report miss positions' do
@@ -61,6 +61,16 @@ describe Player do
 
     end
 
+    context 'has all the ships on the board sunk'do
+
+      let(:board) { double :board, strike: 'HIT!', all_ships_sunk?: true}
+      subject { Player.new(board) }
+
+      it 'announes "GAME OVER!"' do
+        expect(subject.receive_strike LOCATION).to eq 'GAME OVER!'
+      end
+
+    end
   end
 
 end

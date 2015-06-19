@@ -85,11 +85,11 @@ RuntimeError: you have already shot here ...
 2.0.0-p247 :025 > board
  => #<Board:0x007fdfa30953f0 @dimension=10, @board=[#<Ship:0x007fdfa3873e00 @starting_point="C4", @size=2, @orientation=:horizontal, @position=["C4", "D4"], @status=:floating, @hits=1>, #<Ship:0x007fdfa2843620 @starting_point="G3", @size=3, @orientation=:vertical, @position=["G3", "G4", "G5"], @status=:floating, @hits=0>]>
 ```
-Now let's say we hit all the remaining coordinates where there is a ship
+Now let's say we hit all the coordinates where there is a submarine
 
 ```ruby
 2.0.0-p247 :029 > player
- => #<Player:0x007fdfa307cf08 @board=#<Board:0x007fdfa30953f0 @dimension=10, @board=[#<Ship:0x007fdfa3873e00 @starting_point="C4", @size=2, @orientation=:horizontal, @position=["C4", "D4"], @status=:sunk, @hits=2>, #<Ship:0x007fdfa2843620 @starting_point="G3", @size=3, @orientation=:vertical, @position=["G3", "G4", "G5"], @status=:sunk, @hits=3>]>, @hits=["D4", "C4", "G3", "G4", "G5"], @misses=["F7"]>
-2.0.0-p247 :030 > player.lost?
- => true
+ => #<Player:0x007fdfa307cf08 @board=#<Board:0x007fdfa30953f0 @dimension=10, @board=[#<Ship:0x007fdfa3873e00 @starting_point="C4", @size=2, @orientation=:horizontal, @position=["C4", "D4"], @status=:floating, @hits=1>, #<Ship:0x007fdfa2843620 @starting_point="G3", @size=3, @orientation=:vertical, @position=["G3", "G4", "G5"], @status=:sunk, @hits=3>]>, @hits=["D4", "G3", "G4", "G5"], @misses=["F7"]>
+2.0.0-p247 :011 > player.receive_strike "C4"
+ => "GAME OVER!"
 ```
