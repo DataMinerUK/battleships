@@ -10,8 +10,10 @@ describe Player do
     expect(subject.lost?).to eq true
   end
 
-  it 'can place ships' do
-    expect(subject.place :ship).to eq :ship
+  it 'calls on the board to place ships' do
+    board2 = double :board
+    expect(board2).to receive(:place)
+    Player.new(board2).place :ship
 
   end
 
@@ -20,7 +22,7 @@ describe Player do
     ## when testing the player, TEST THE PLAYER = stubbing the board with
     ## 'strike' is not a problem here, and you have to do it
     ## because receive_strike is calling the method "strike" on the board
-    
+
     LOCATION = "C4"
     subject { Player.new(double :board, strike: 'HIT!') }
 
@@ -58,7 +60,7 @@ describe Player do
       end
 
     end
-    
+
   end
 
 end
