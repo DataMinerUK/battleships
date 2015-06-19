@@ -97,7 +97,7 @@ class Board
   end
 
   def bottom_right_letter
-    alphabet[dimension-1]
+    alphabet[dimension]
   end
 
   def all_ships_positions
