@@ -83,7 +83,7 @@ class Board
   end
 
   def last_y_coordinate_outside? ship
-    last_row_on_board = dimension - 1
+    last_row_on_board = dimension
 
     to_check = ship.position.last
     y_coordinate_of_ship = (to_check.scan(/[0-9]/).join).to_i

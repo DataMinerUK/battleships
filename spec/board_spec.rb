@@ -22,7 +22,7 @@ let (:ship){double :ship, position: ["C4", "C5", "C6"], outside_board?: false}
 
       context 'when placing a ship outside the board' do
 
-        let (:ship_not_on_board){double :ship, position: ["J8", "J9", "J10"]}
+        let (:ship_not_on_board){double :ship, position: ["J9", "J10", "J11"]}
 
         it 'should know that ship is outside board' do
           expect(subject.outside_board? ship_not_on_board).to eq true
